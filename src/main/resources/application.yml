@@ -1,0 +1,9 @@
+spring: 
+  jpa:
+    database: h2
+    hibernate:
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      #ddl-auto: create
+    properties:
+      hibernate.format_sql: true
+    show-sql: true
