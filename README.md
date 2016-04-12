@@ -6,7 +6,7 @@ spring-jpa-querydsl-sample (join and paging)
 
 This is sample code with spring-jpa-querydsl.
 
-It has two types of @Query(@NamedQuery) and QueryDsl.
+It has two types of @Query(@NamedQuery) and QueryDsl (inner join and paging).
 
 #### @Query(@NamedQuery)
 ```bash
