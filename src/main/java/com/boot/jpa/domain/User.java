@@ -36,19 +36,19 @@ public class User {
 	@Column(name = "user_type")
 	@Enumerated(EnumType.STRING)
 	private USER_TYPE type;
-	
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+
+	@OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
 	private UserInfo userInfo;
-	
-	@OneToMany(mappedBy = "user")
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
 	private List<UserHistory> userHistories = new ArrayList<>();
-	
+
 	public enum USER_TYPE {USER, ADMIN}
 
 	@Override
 	public String toString() {
 		return "User [userNo=" + userNo + ", type=" + type + "]";
 	};
-	
-	
+
+
 }

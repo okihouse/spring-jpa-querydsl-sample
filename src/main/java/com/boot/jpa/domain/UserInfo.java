@@ -23,8 +23,8 @@ public class UserInfo {
 	private String email;
 
 	@MapsId
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "UNO")
 	private User user;
-	
+
 }
