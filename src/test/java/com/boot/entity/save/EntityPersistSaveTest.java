@@ -54,9 +54,6 @@ public class EntityPersistSaveTest {
 		User user = new User();
 		user.setType(USER_TYPE.USER);
 
-		Calendar calendar = Calendar.getInstance();
-		calendar.add(Calendar.DATE, -1);
-
 		UserHistory firstUserHistory = new UserHistory();
 		firstUserHistory.setLatestLogin(getDate(-2));
 		firstUserHistory.setUser(user);
