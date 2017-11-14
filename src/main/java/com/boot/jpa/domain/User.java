@@ -37,7 +37,7 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	private USER_TYPE type;
 
-	@OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
+	@OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST, orphanRemoval = true)
 	private UserInfo userInfo;
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)

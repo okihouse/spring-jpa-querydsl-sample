@@ -1,4 +1,4 @@
-package com.boot.jpa.repository.custom;
+package com.boot.jpa.repository.user.custom;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import com.boot.jpa.vo.ResultVO;
 public interface UserCustomRepository {
 
 	List<ResultVO> findByTypeQuerydsl(USER_TYPE user);
-	
+
 	Page<ResultVO> findByTypeQuerydsl(USER_TYPE user, Pageable pageable);
-	
+
 }

@@ -1,4 +1,4 @@
-package com.boot.jpa.repository.custom;
+package com.boot.jpa.repository.user.custom;
 
 import java.util.List;
 
@@ -28,30 +28,30 @@ public class UserRepositoryImpl extends QueryDslRepositorySupport implements Use
 
 	@PersistenceContext
 	private EntityManager entityManager;
-	
-	private final QUser qUser = QUser.user;
-	private final QUserInfo qUserInfo = QUserInfo.userInfo;
+
+	private final QUser user = QUser.user;
+	private final QUserInfo userInfo = QUserInfo.userInfo;
 
 	@Override
-	public List<ResultVO> findByTypeQuerydsl(USER_TYPE user) {
+	public List<ResultVO> findByTypeQuerydsl(USER_TYPE userType) {
 		JPAQuery query = new JPAQuery(entityManager);
-		
-		return query.from(qUser)
-				.innerJoin(qUser.userInfo, qUserInfo)
-				.where(qUser.type.eq(User.USER_TYPE.USER))
-				.list(Projections.bean(ResultVO.class, qUser.userNo, qUser.type, qUserInfo.email));
+
+		return query.from(user)
+				.innerJoin(user.userInfo, userInfo)
+				.where(user.type.eq(userType))
+				.list(Projections.bean(ResultVO.class, user.userNo, user.type, userInfo.email));
 	}
 
 	@Override
-	public Page<ResultVO> findByTypeQuerydsl(USER_TYPE user, Pageable pageable) {
+	public Page<ResultVO> findByTypeQuerydsl(USER_TYPE userType, Pageable pageable) {
 		JPAQuery query = new JPAQuery(entityManager);
 		query = (JPAQuery) super.getQuerydsl().applyPagination(pageable, query);
-		
-		List<ResultVO> results = query.from(qUser)
-									  .innerJoin(qUser.userInfo, qUserInfo)
-									  .where(qUser.type.eq(User.USER_TYPE.USER))
-									  .list(Projections.bean(ResultVO.class, qUser.userNo, qUser.type, qUserInfo.email));
-		
+
+		List<ResultVO> results = query.from(user)
+									  .innerJoin(user.userInfo, userInfo)
+									  .where(user.type.eq(userType))
+									  .list(Projections.bean(ResultVO.class, user.userNo, user.type, userInfo.email));
+
 		return new PageImpl<ResultVO>(results, pageable, results.size());
 	}
 
