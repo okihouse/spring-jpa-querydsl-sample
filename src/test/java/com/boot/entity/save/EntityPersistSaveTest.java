@@ -18,9 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.boot.SpringJpaQuerydslSampleApplication;
 import com.boot.jpa.domain.User;
 import com.boot.jpa.domain.User.USER_TYPE;
+import com.boot.jpa.repository.user.UserRepository;
 import com.boot.jpa.domain.UserHistory;
 import com.boot.jpa.domain.UserInfo;
-import com.boot.jpa.repository.UserRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = SpringJpaQuerydslSampleApplication.class)
