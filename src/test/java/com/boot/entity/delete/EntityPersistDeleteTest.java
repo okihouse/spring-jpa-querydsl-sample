@@ -45,7 +45,7 @@ public class EntityPersistDeleteTest {
 	}
 
 	@Test
-	public void delete_jpa() {
+	public void delete_user_and_userinfo_with_jpa() {
 		UserInfo userInfo = userInfoRepository.findByEmail("foo@bar.com");
 		User user = userInfo.getUser();
 
@@ -55,7 +55,7 @@ public class EntityPersistDeleteTest {
 	}
 
 	@Test
-	public void delete_jpa_opposite() {
+	public void delete_userinfo_and_user_with_jpa() {
 		UserInfo userInfo = userInfoRepository.findByEmail("foo@bar.com");
 
 		userInfoRepository.delete(userInfo); // Must be "OrphanRemoval = true" setting is enabled.
@@ -64,7 +64,7 @@ public class EntityPersistDeleteTest {
 	}
 
 	@Test
-	public void delete_querydsl() {
+	public void delete_only_userinfo_with_querydsl() {
 		UserInfo userInfo = userInfoRepository.findByEmail("foo@bar.com");
 
 		userInfoRepository.deleteByEmail("foo@bar.com");
