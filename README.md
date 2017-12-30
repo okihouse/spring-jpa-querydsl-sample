@@ -8,12 +8,12 @@ It has two types of @Query(@NamedQuery) and QueryDsl (inner join and paging).
 ```bash
   // Using @Query example. (Actual using @NamedQuery in {@link com.boot.jpa.domain.User})
 	@Query(value = "select new com.boot.jpa.vo.ResultVO("
-						+ "u.userNo,"
-						+ "u.type,"
-						+ "ui.email) "
-				 + "from User u inner join u.userInfo ui "
-				 + "where u.type = :type"
-				)
+				+ "u.userNo,"
+				+ "u.type,"
+				+ "ui.email) "
+			+ "from User u inner join u.userInfo ui "
+			+ "where u.type = :type"
+	)
 ```
 
 #### QueryDsl
@@ -21,9 +21,13 @@ It has two types of @Query(@NamedQuery) and QueryDsl (inner join and paging).
 	JPAQuery query = new JPAQuery(entityManager);
 		
 	query.from(qUser)
-			 .innerJoin(qUser.userInfo, qUserInfo)
-			 .where(qUser.type.eq(User.USER_TYPE.USER))
-			 .list(Projections.bean(ResultVO.class, qUser.userNo, qUser.type, qUserInfo.email));
+	     .innerJoin(qUser.userInfo, qUserInfo)
+	     .where(qUser.type.eq(User.USER_TYPE.USER))
+	     .list(Projections.bean(ResultVO.class, 
+	     	qUser.userNo,
+		qUser.type,
+		qUserInfo.email
+	     ));
 ```
 
 ## Run
