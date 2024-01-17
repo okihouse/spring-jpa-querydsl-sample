@@ -34,3 +34,6 @@ It has two types of @Query(@NamedQuery) and QueryDsl (inner join and paging).
 ```bash
 	mvn test
 ```
+
+
+for test
